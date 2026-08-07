@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <!-- ═══════════════════════════════════════════════════════
+       META & SEO
+       ═══════════════════════════════════════════════════════ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary SEO -->
+  <title>Elshaarawy Hassan — Flutter Developer Portfolio</title>
+  <meta name="description" content="Elshaarawy Hassan is a Flutter Developer with 1 year of experience building cross-platform apps using Clean Architecture, BLoC, Firebase, and REST APIs." />
+  <meta name="keywords" content="Flutter Developer, Dart, Firebase, Mobile App Development, BLoC, Clean Architecture, Cross-Platform, Elshaarawy Hassan" />
+  <meta name="author" content="Elshaarawy Hassan" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://elshaarawy7.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Elshaarawy Hassan — Flutter Developer" />
+  <meta property="og:description" content="Cross-platform mobile developer specialising in Flutter, Dart, Firebase, BLoC, and Clean Architecture." />
+  <meta property="og:url"         content="https://elshaarawy7.github.io/" />
+  <meta property="og:image"       content="assets/images/profile-placeholder.png" />
+  <meta property="og:site_name"   content="Elshaarawy Hassan Portfolio" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Elshaarawy Hassan — Flutter Developer" />
+  <meta name="twitter:description" content="Cross-platform mobile developer specialising in Flutter, Dart, Firebase, BLoC, and Clean Architecture." />
+  <meta name="twitter:image"       content="assets/images/profile-placeholder.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+
+  <!-- ═══════════════════════════════════════════════════════
+       THEME (inline script — prevents FOUC)
+       ═══════════════════════════════════════════════════════ -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('portfolio-theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+
+  <!-- ═══════════════════════════════════════════════════════
+       STYLES
+       ═══════════════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+
+<body>
+
+<!-- ── Skip Link (Accessibility) ───────────────────────── -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- ═══════════════════════════════════════════════════════
+     LOADING SCREEN
+     ═══════════════════════════════════════════════════════ -->
+<div id="loading-screen" aria-hidden="true" role="status">
+  <div class="loader-ring"></div>
+  <span class="loader-text">Loading…</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVBAR
+     ═══════════════════════════════════════════════════════ -->
+<header id="navbar" class="navbar" role="banner">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:100%;padding:0;">
+
+    <!-- Logo -->
+    <a href="#home" class="nav-logo" aria-label="Elshaarawy Hassan — Back to top">
+      <div class="nav-logo-icon" aria-hidden="true">&lt;H/&gt;</div>
+      <span class="nav-logo-text">Elshaarawy <span>Hassan</span></span>
+    </a>
+
+    <!-- Navigation Menu -->
+    <nav id="nav-menu" class="nav-menu" role="navigation" aria-label="Main navigation">
+      <a href="#home"       class="nav-link" aria-current="page">Home</a>
+      <a href="#about"      class="nav-link">About</a>
+      <a href="#education"  class="nav-link">Education</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#skills"     class="nav-link">Skills</a>
+      <a href="#projects"   class="nav-link">Projects</a>
+      <a href="#feedback"   class="nav-link">Feedback</a>
+      <a href="#services"   class="nav-link">Services</a>
+      <a href="#contact"    class="nav-link">Contact</a>
+
+      <!-- Theme toggle inside menu for mobile -->
+      <button
+        class="nav-theme-btn"
+        data-theme-toggle
+        aria-label="Switch to light mode"
+        title="Toggle theme"
+      ><i class="fa-solid fa-sun" aria-hidden="true"></i></button>
+    </nav>
+
+    <!-- Right controls (desktop theme btn + hamburger) -->
+    <div style="display:flex;align-items:center;gap:0.5rem;">
+      <button
+        class="nav-theme-btn"
+        data-theme-toggle
+        aria-label="Toggle color theme"
+        title="Toggle dark/light mode"
+      ><i class="fa-solid fa-sun" aria-hidden="true"></i></button>
+
+      <button
+        id="hamburger"
+        class="hamburger"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div id="nav-overlay" class="nav-menu-overlay" aria-hidden="true"></div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     MAIN CONTENT
+     ═══════════════════════════════════════════════════════ -->
+<main id="main-content">
+
+  <!-- ────────────────────────────────────────────────────
+       1. HOME / HERO
+       ──────────────────────────────────────────────────── -->
+  <section id="home" aria-labelledby="hero-name">
+    <!-- Animated particle canvas -->
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Left: Text content -->
+        <div class="hero-content" role="region" aria-label="Introduction">
+          <span class="hero-greeting">
+            <span class="hero-greeting-dot" aria-hidden="true"></span>
+            Hello, World! 👋
+          </span>
+
+          <h1 class="hero-name" id="hero-name">
+            Elshaarawy<br /><span>Hassan</span>
+          </h1>
+
+          <p class="hero-title" aria-live="polite" aria-atomic="true">
+            <span id="typing-text" class="typing-text" aria-label="Flutter Dev"></span>
+            <span class="typing-cursor" aria-hidden="true"></span>
+          </p>
+
+          <p class="hero-bio">
+            Flutter Developer with 1 year of experience building cross-platform
+            applications with clean architecture, responsive UI, and smooth user
+            experiences. Passionate about writing maintainable code, learning
+            modern technologies, and always open to new opportunities.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-rocket" aria-hidden="true"></i> View Projects
+            </a>
+            <a
+              href="assets/Elshaarawy_Hassan_CV.pdf"
+              download="Elshaarawy_Hassan_CV.pdf"
+              class="btn btn-primary btn-cv"
+              aria-label="Download CV (PDF)"
+            >
+              <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download CV
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fa-solid fa-comments" aria-hidden="true"></i> Contact Me
+            </a>
+            <a
+              href="https://github.com/elshaarawy7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-ghost"
+              aria-label="GitHub profile (opens in new tab)"
+            >
+              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Profile image -->
+        <div class="hero-image-side">
+          <div class="hero-image-wrapper float-anim" role="img" aria-label="Elshaarawy Hassan profile photo">
+            <div class="hero-image-ring"       aria-hidden="true"></div>
+            <div class="hero-image-ring-inner" aria-hidden="true"></div>
+            <img
+              src="assets/profile.png"
+              alt="Elshaarawy Hassan — Flutter Developer"
+              class="hero-profile-img"
+              width="360"
+              height="360"
+              loading="eager"
+            />
+
+            <!-- Floating badges -->
+            <div class="hero-badge hero-badge-1" aria-hidden="true">
+              <i class="hero-badge-icon fa-brands fa-flutter" aria-hidden="true"></i>
+              <div>
+                <div>Flutter</div>
+                <div class="hero-badge-label">Cross-Platform</div>
+              </div>
+            </div>
+
+            <div class="hero-badge hero-badge-2" aria-hidden="true">
+              <i class="hero-badge-icon fa-solid fa-fire" aria-hidden="true"></i>
+              <div>
+                <div>Firebase</div>
+                <div class="hero-badge-label">Backend</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.hero-grid -->
+    </div><!-- /.container -->
+
+    <!-- Scroll hint -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────
+       2. ABOUT
+       ──────────────────────────────────────────────────── -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="container">
+
+      <header class="section-header">
+        <span class="section-label">Who I Am</span>
+        <h2 class="section-title" id="about-title">About Me</h2>
+        <p class="section-sub">A passionate Flutter developer crafting beautiful cross-platform experiences.</p>
+      </header>
+
+      <div class="about-grid reveal-group">
+
+        <!-- Photo -->
+        <div class="about-photo-wrapper reveal from-left">
+          <img
+            src="assets/images/about-workspace.png"
+            alt="Elshaarawy Hassan working on a laptop"
+            class="about-photo"
+            loading="lazy"
+            width="260"
+            height="260"
+          />
+          <div class="about-photo-badge" aria-label="1 year experience">1 Year Exp.</div>
+        </div>
+
+        <!-- Text -->
+        <div class="about-text reveal from-right">
+          <h3>Flutter Developer &amp; Problem Solver</h3>
+          <p>
+            I'm Elshaarawy Hassan — a Flutter Developer based in Cairo, Egypt, dedicated to
+            crafting high-quality cross-platform mobile applications. With a solid foundation
+            in Dart and a passion for clean, maintainable code, I build apps that are both
+            performant and delightful to use.
+          </p>
+          <p>
+            I specialise in applying <strong>Clean Architecture</strong> and <strong>BLoC / Cubit</strong>
+            state management to keep projects structured and scalable. When I'm not building apps,
+            I'm learning new technologies, contributing on GitHub, and exploring the latest in
+            mobile development.
+          </p>
+
+          <p class="highlights-label">Core Technologies</p>
+          <div class="highlights-grid" role="list" aria-label="Core skills">
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-brands fa-flutter" aria-hidden="true"></i> Flutter</div>
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-solid fa-code" aria-hidden="true"></i> Dart</div>
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-solid fa-fire" aria-hidden="true"></i> Firebase</div>
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-solid fa-globe" aria-hidden="true"></i> REST API</div>
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-solid fa-layer-group" aria-hidden="true"></i> Clean Arch</div>
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-solid fa-diagram-project" aria-hidden="true"></i> BLoC</div>
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-brands fa-github" aria-hidden="true"></i> Git &amp; GitHub</div>
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Responsive UI</div>
+            <div class="highlight-chip" role="listitem"><i class="highlight-chip-icon fa-solid fa-brain" aria-hidden="true"></i> Problem Solving</div>
+          </div>
+        </div>
+
+      </div><!-- /.about-grid -->
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────
+       3. EDUCATION
+       ──────────────────────────────────────────────────── -->
+  <section id="education" aria-labelledby="education-title">
+    <div class="container">
+
+      <header class="section-header">
+        <span class="section-label">Academic Background</span>
+        <h2 class="section-title" id="education-title">Education</h2>
+      </header>
+
+      <div class="reveal scale">
+        <article class="edu-card glass-card" aria-label="Education — Computer Science, Alshrouk Academy">
+          <div class="edu-header">
+            <div class="edu-icon-wrap" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div>
+              <div class="edu-degree">Computer Science</div>
+              <div class="edu-institution">Alshrouk Academy</div>
+            </div>
+          </div>
+
+          <div class="edu-meta" role="list" aria-label="Education details">
+            <div class="edu-meta-item" role="listitem">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i> GPA: 3.0 / 4.0
+            </div>
+            <div class="edu-meta-item" role="listitem">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Cairo, Egypt
+            </div>
+            <div class="edu-meta-item" role="listitem">
+              <i class="fa-solid fa-school" aria-hidden="true"></i> Academy
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────
+       4. EXPERIENCE
+       ──────────────────────────────────────────────────── -->
+  <section id="experience" aria-labelledby="experience-title">
+    <div class="container">
+
+      <header class="section-header">
+        <span class="section-label">Work History</span>
+        <h2 class="section-title" id="experience-title">Experience</h2>
+      </header>
+
+      <div class="reveal scale">
+        <article class="exp-card glass-card" aria-label="Flutter Developer — 1 Year experience">
+          <div class="exp-header">
+            <div class="exp-icon-wrap" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
+            <div>
+              <div class="exp-role">Flutter Developer</div>
+              <div class="exp-duration">1 Year Experience</div>
+            </div>
+          </div>
+
+          <p class="exp-responsibilities-label">Key Responsibilities</p>
+          <ul class="exp-list" aria-label="Responsibilities list">
+            <li class="exp-list-item">Build Flutter Applications for Android &amp; iOS platforms</li>
+            <li class="exp-list-item">Implement Responsive UI following Material &amp; Cupertino design guidelines</li>
+            <li class="exp-list-item">Consume REST APIs using Dio and handle data models with JSON serialization</li>
+            <li class="exp-list-item">Firebase Authentication — email/password, social sign-in flows</li>
+            <li class="exp-list-item">Firestore — real-time database integration, CRUD operations</li>
+            <li class="exp-list-item">State Management using BLoC / Cubit patterns for scalable architecture</li>
+            <li class="exp-list-item">Debugging, profiling, and performance optimisation</li>
+            <li class="exp-list-item">Git collaboration — branching, PRs, code reviews, version control</li>
+          </ul>
+
+          <p class="exp-stack-label">Tech Stack</p>
+          <div class="exp-stack" role="list" aria-label="Technologies used">
+            <span class="exp-tag" role="listitem">Flutter</span>
+            <span class="exp-tag" role="listitem">Dart</span>
+            <span class="exp-tag" role="listitem">Firebase</span>
+            <span class="exp-tag" role="listitem">Git</span>
+            <span class="exp-tag" role="listitem">GitHub</span>
+            <span class="exp-tag" role="listitem">REST API</span>
+            <span class="exp-tag" role="listitem">Dio</span>
+            <span class="exp-tag" role="listitem">Hive</span>
+            <span class="exp-tag" role="listitem">SharedPreferences</span>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────
+       5. SKILLS
+       ──────────────────────────────────────────────────── -->
+  <section id="skills" aria-labelledby="skills-title">
+    <div class="container">
+
+      <header class="section-header">
+        <span class="section-label">What I Know</span>
+        <h2 class="section-title" id="skills-title">Skills</h2>
+        <p class="section-sub">A snapshot of the technologies and concepts I work with daily.</p>
+      </header>
+
+      <!-- Tab Controls -->
+      <div class="skills-tabs" role="tablist" aria-label="Skill categories">
+        <button class="skill-tab active" role="tab" data-tab="programming" aria-selected="true"  aria-controls="panel-programming" id="tab-programming">Programming &amp; Concepts</button>
+        <button class="skill-tab"        role="tab" data-tab="flutter"     aria-selected="false" aria-controls="panel-flutter"     id="tab-flutter"    >Flutter Dev</button>
+        <button class="skill-tab"        role="tab" data-tab="patterns"    aria-selected="false" aria-controls="panel-patterns"    id="tab-patterns"   >Design Patterns</button>
+        <button class="skill-tab"        role="tab" data-tab="firebase"    aria-selected="false" aria-controls="panel-firebase"    id="tab-firebase"   >Firebase / Storage</button>
+      </div>
+
+      <!-- Panel: Programming & Concepts -->
+      <div id="panel-programming" class="skill-panel active" role="tabpanel" aria-labelledby="tab-programming" data-panel="programming">
+        <div class="skills-grid reveal-group">
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Dart</span><span class="skill-pct">90%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="90%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">OOP</span><span class="skill-pct">85%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="85%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Data Structures</span><span class="skill-pct">75%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="75%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Algorithms</span><span class="skill-pct">70%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="70%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">SOLID Principles</span><span class="skill-pct">80%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="80%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Problem Solving</span><span class="skill-pct">82%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="82%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Panel: Flutter Development -->
+      <div id="panel-flutter" class="skill-panel" role="tabpanel" aria-labelledby="tab-flutter" data-panel="flutter" hidden>
+        <div class="skills-grid reveal-group">
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Flutter Framework</span><span class="skill-pct">88%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="88%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Widgets &amp; Layouts</span><span class="skill-pct">90%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="90%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Responsive Design</span><span class="skill-pct">85%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="85%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Animations</span><span class="skill-pct">75%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="75%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">BLoC Pattern</span><span class="skill-pct">82%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="82%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Cubit</span><span class="skill-pct">85%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="85%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">REST API Integration</span><span class="skill-pct">87%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="87%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Panel: Design Patterns -->
+      <div id="panel-patterns" class="skill-panel" role="tabpanel" aria-labelledby="tab-patterns" data-panel="patterns" hidden>
+        <div class="skills-grid reveal-group">
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Clean Architecture</span><span class="skill-pct">82%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="82%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Repository Pattern</span><span class="skill-pct">80%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="80%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">MVVM Concepts</span><span class="skill-pct">75%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="75%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Dependency Injection</span><span class="skill-pct">78%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="78%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Panel: Firebase / Storage -->
+      <div id="panel-firebase" class="skill-panel" role="tabpanel" aria-labelledby="tab-firebase" data-panel="firebase" hidden>
+        <div class="skills-grid reveal-group">
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Firebase Auth</span><span class="skill-pct">88%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="88%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Firestore</span><span class="skill-pct">85%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="85%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Firebase Storage</span><span class="skill-pct">80%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="80%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">Hive (Local DB)</span><span class="skill-pct">82%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="82%"></div></div></div>
+          <div class="skill-item reveal"><div class="skill-name-row"><span class="skill-name">SharedPreferences</span><span class="skill-pct">90%</span></div><div class="progress-bar"><div class="progress-bar-fill" data-width="90%"></div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────
+       6. PROJECTS
+       ──────────────────────────────────────────────────── -->
+  <section id="projects" aria-labelledby="projects-title">
+    <div class="container">
+
+      <header class="section-header">
+        <span class="section-label">What I've Built</span>
+        <h2 class="section-title" id="projects-title">Projects</h2>
+        <p class="section-sub">A selection of my recent Flutter projects — click GitHub to explore the code.</p>
+      </header>
+
+      <div class="projects-grid reveal-group">
+
+        <!-- Project 1: E-Commerce / Restaurant App -->
+        <article class="project-card reveal" aria-label="Project: E-Commerce Restaurant App">
+          <div class="project-card-image-wrap">
+            <img
+              src="assets/images/project-1.png"
+              alt="Screenshot of E-Commerce Restaurant App UI"
+              class="project-card-image"
+              loading="lazy"
+              width="600"
+              height="200"
+            />
+            <div class="project-card-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-name">E-Commerce App</h3>
+            <p class="project-card-desc">
+              A fully-featured restaurant ordering app with product listings, cart management,
+              Firebase Authentication, and Firestore real-time database integration.
+            </p>
+            <div class="project-card-tags" role="list" aria-label="Technologies">
+              <span class="project-tag" role="listitem">Flutter</span>
+              <span class="project-tag" role="listitem">Firebase</span>
+              <span class="project-tag" role="listitem">BLoC</span>
+              <span class="project-tag" role="listitem">REST API</span>
+              <span class="project-tag" role="listitem">Dio</span>
+            </div>
+            <div class="project-card-actions">
+              <a
+                href="https://github.com/elshaarawy7/restaurant-app.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-sm"
+                aria-label="View E-Commerce App on GitHub (opens in new tab)"
+              ><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+              <button class="btn btn-disabled btn-sm" disabled aria-label="Live demo not available"><i class="fa-solid fa-ban" aria-hidden="true"></i> No Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Makzen Pro -->
+        <article class="project-card reveal" aria-label="Project: Makzen Pro warehouse management app">
+          <div class="project-card-image-wrap">
+            <img
+              src="assets/images/makzan-pro.png"
+              alt="Screenshot of Makzen Pro inventory management app UI"
+              class="project-card-image"
+              loading="lazy"
+              width="600"
+              height="300"
+            />
+            <div class="project-card-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-name">Makzen Pro</h3>
+            <p class="project-card-desc">
+              A professional warehouse and inventory management application. Supports product
+              tracking, stock management, profit calculation, and low-stock alerts using Clean Architecture.
+            </p>
+            <div class="project-card-tags" role="list" aria-label="Technologies">
+              <span class="project-tag" role="listitem">Flutter</span>
+              <span class="project-tag" role="listitem">Dart</span>
+              <span class="project-tag" role="listitem">Firestore</span>
+              <span class="project-tag" role="listitem">Clean Arch</span>
+              <span class="project-tag" role="listitem">Cubit</span>
+            </div>
+            <div class="project-card-actions">
+              <a
+                href="https://github.com/elshaarawy7/MakhzanPro.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-sm"
+                aria-label="View Makzen Pro on GitHub (opens in new tab)"
+              ><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+              <button class="btn btn-disabled btn-sm" disabled aria-label="Live demo not available"><i class="fa-solid fa-ban" aria-hidden="true"></i> No Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Modrak App -->
+        <article class="project-card reveal" aria-label="Project: Modrak educational platform app">
+          <div class="project-card-image-wrap">
+            <img
+              src="assets/images/modrak-app.png"
+              alt="Screenshot of Modrak Islamic educational platform app UI"
+              class="project-card-image"
+              loading="lazy"
+              width="600"
+              height="300"
+            />
+            <div class="project-card-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-name">Modrak App</h3>
+            <p class="project-card-desc">
+              An Islamic history and educational platform Flutter app featuring structured historical eras,
+              book listings, authentication, and REST API data fetching with Cubit.
+            </p>
+            <div class="project-card-tags" role="list" aria-label="Technologies">
+              <span class="project-tag" role="listitem">Flutter</span>
+              <span class="project-tag" role="listitem">Dio</span>
+              <span class="project-tag" role="listitem">REST API</span>
+              <span class="project-tag" role="listitem">Hive</span>
+              <span class="project-tag" role="listitem">Cubit</span>
+            </div>
+            <div class="project-card-actions">
+              <a
+                href="https://github.com/elshaarawy7/mdark.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-sm"
+                aria-label="View Modrak App on GitHub (opens in new tab)"
+              ><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+              <button class="btn btn-disabled btn-sm" disabled aria-label="Live demo not available"><i class="fa-solid fa-ban" aria-hidden="true"></i> No Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Dar Alarkam App -->
+        <article class="project-card reveal" aria-label="Project: Dar Alarkam mobile app">
+          <div class="project-card-image-wrap">
+            <img
+              src="assets/images/dar-alarkam.jpg"
+              alt="Screenshot of Dar Alarkam Quran & Adhkar mobile app UI"
+              class="project-card-image"
+              loading="lazy"
+              width="600"
+              height="300"
+            />
+            <div class="project-card-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-name">Dar Alarkam App</h3>
+            <p class="project-card-desc">
+              A beautifully designed Arabic Quran and Adhkar companion app with dark mode, Surah indexing,
+              Tasbeeh counter, RTL support, and local data persistence.
+            </p>
+            <div class="project-card-tags" role="list" aria-label="Technologies">
+              <span class="project-tag" role="listitem">Flutter</span>
+              <span class="project-tag" role="listitem">Firebase</span>
+              <span class="project-tag" role="listitem">RTL</span>
+              <span class="project-tag" role="listitem">SharedPrefs</span>
+              <span class="project-tag" role="listitem">Cubit</span>
+            </div>
+            <div class="project-card-actions">
+              <a
+                href="https://github.com/elshaarawy7/dar-Alarkam.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-sm"
+                aria-label="View Dar Alarkam App on GitHub (opens in new tab)"
+              ><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+              <button class="btn btn-disabled btn-sm" disabled aria-label="Live demo not available"><i class="fa-solid fa-ban" aria-hidden="true"></i> No Demo</button>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /.projects-grid -->
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────
+       7. FEEDBACK
+       ──────────────────────────────────────────────────── -->
+  <section id="feedback" aria-labelledby="feedback-title">
+    <div class="container">
+
+      <header class="section-header">
+        <span class="section-label">Share Your Thoughts</span>
+        <h2 class="section-title" id="feedback-title">Feedback</h2>
+        <p class="section-sub">Worked with me or have something to say? I'd love to hear it!</p>
+      </header>
+
+      <div class="reveal scale">
+        <div class="feedback-form glass-card">
+          <form id="feedback-form" novalidate aria-label="Feedback submission form">
+
+            <!-- Hidden rating value -->
+            <input type="hidden" id="rating-value" name="rating" value="0" />
+
+            <!-- Name -->
+            <div class="feedback-form-group">
+              <label class="feedback-label" for="feedback-name">Your Name (optional)</label>
+              <input
+                type="text"
+                id="feedback-name"
+                name="name"
+                class="feedback-name-input"
+                placeholder="e.g. Ahmed Mohamed"
+                autocomplete="name"
+              />
+            </div>
+
+            <!-- Star Rating -->
+            <div class="feedback-form-group">
+              <label class="feedback-label" id="stars-label">Overall Rating</label>
+              <div class="stars-group" role="group" aria-labelledby="stars-label">
+                <button type="button" class="star-btn" data-value="1" aria-label="1 star — Poor"><i class="fa-solid fa-star" aria-hidden="true"></i></button>
+                <button type="button" class="star-btn" data-value="2" aria-label="2 stars — Fair"><i class="fa-solid fa-star" aria-hidden="true"></i></button>
+                <button type="button" class="star-btn" data-value="3" aria-label="3 stars — Good"><i class="fa-solid fa-star" aria-hidden="true"></i></button>
+                <button type="button" class="star-btn" data-value="4" aria-label="4 stars — Great"><i class="fa-solid fa-star" aria-hidden="true"></i></button>
+                <button type="button" class="star-btn" data-value="5" aria-label="5 stars — Excellent"><i class="fa-solid fa-star" aria-hidden="true"></i></button>
+              </div>
+              <p id="stars-display-text" class="stars-display-text" aria-live="polite" aria-atomic="true"></p>
+            </div>
+
+            <!-- Satisfaction Slider -->
+            <div class="feedback-form-group">
+              <label class="feedback-label" for="satisfaction-slider">
+                Satisfaction Level &mdash; <span id="slider-value-display">50%</span>
+              </label>
+              <input
+                type="range"
+                id="satisfaction-slider"
+                name="satisfaction"
+                class="feedback-slider"
+                min="0"
+                max="100"
+                value="50"
+                step="5"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="50"
+                aria-label="Satisfaction level slider"
+              />
+              <div class="slider-labels" aria-hidden="true">
+                <span>Not Satisfied</span>
+                <span>Very Satisfied</span>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="feedback-form-group">
+              <label class="feedback-label" for="feedback-message">Your Message <span aria-label="required">*</span></label>
+              <textarea
+                id="feedback-message"
+                name="message"
+                class="feedback-textarea"
+                rows="5"
+                placeholder="Share your experience or thoughts…"
+                required
+                aria-required="true"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary feedback-submit-btn" id="feedback-submit-btn">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Submit Feedback
+            </button>
+          </form>
+
+          <!-- Success message (shown after submission) -->
+          <div id="feedback-success" class="feedback-success" role="alert" aria-live="assertive">
+            🎉 Thank you for your feedback! It means a lot.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────
+       8. SERVICES
+       ──────────────────────────────────────────────────── -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="container">
+
+      <header class="section-header">
+        <span class="section-label">What I Offer</span>
+        <h2 class="section-title" id="services-title">Services</h2>
+        <p class="section-sub">Practical services tailored to turn your ideas into polished results.</p>
+      </header>
+
+      <div class="services-grid reveal-group">
+
+        <!-- Service 1: Flutter Development -->
+        <article class="service-card reveal" aria-label="Service: Flutter Development">
+          <div class="service-header">
+            <div class="service-icon-wrap" aria-hidden="true"><i class="fa-brands fa-flutter"></i></div>
+            <h3 class="service-title">Flutter Development</h3>
+          </div>
+          <div class="service-body" id="service-body-1">
+            <p class="service-desc">
+              End-to-end cross-platform mobile app development for Android &amp; iOS using Flutter
+              and Dart, following clean architecture, BLoC state management, and modern UI patterns.
+            </p>
+            <ul class="service-features" aria-label="Flutter service features">
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Cross-platform (Android &amp; iOS)</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Firebase backend integration</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> REST API consumption</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Clean Architecture &amp; BLoC</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Responsive &amp; animated UI</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Service 2: Canva Design -->
+        <article class="service-card reveal" aria-label="Service: Canva Design">
+          <div class="service-header">
+            <div class="service-icon-wrap" aria-hidden="true"><i class="fa-solid fa-pen-ruler"></i></div>
+            <h3 class="service-title">Canva Design</h3>
+          </div>
+          <div class="service-body" id="service-body-2">
+            <p class="service-desc">
+              Professional visual design using Canva — social media graphics, presentations,
+              banners, business cards, and brand kits that communicate your message beautifully.
+            </p>
+            <ul class="service-features" aria-label="Canva design features">
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Social media graphics &amp; posts</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Presentation slides (pitch decks)</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Banners &amp; thumbnails</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Brand kits &amp; logo design</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Service 3: Microsoft Office -->
+        <article class="service-card reveal" aria-label="Service: Microsoft Office Applications">
+          <div class="service-header">
+            <div class="service-icon-wrap" aria-hidden="true"><i class="fa-brands fa-microsoft"></i></div>
+            <h3 class="service-title">Microsoft Office Applications</h3>
+          </div>
+          <div class="service-body" id="service-body-3">
+            <p class="service-desc">
+              Proficient use of the Microsoft Office suite for professional documentation,
+              data organisation, and business productivity tasks.
+            </p>
+            <ul class="service-features" aria-label="Microsoft Office features">
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Word — documents &amp; reports</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Excel — spreadsheets &amp; data</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> PowerPoint — slide presentations</li>
+              <li class="service-feature"><span class="service-feature-icon" aria-hidden="true">✓</span> Professional formatting &amp; templates</li>
+            </ul>
+          </div>
+        </article>
+
+      </div><!-- /.services-grid -->
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────
+       9. CONTACT
+       ──────────────────────────────────────────────────── -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+
+      <header class="section-header text-center">
+        <span class="section-label"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Let's Connect</span>
+        <h2 class="section-title" id="contact-title">Get In Touch</h2>
+        <p class="section-sub">Have a project in mind, a job opportunity, or want to collaborate? Reach out anytime!</p>
+      </header>
+
+      <div class="contact-wrapper reveal-group">
+
+        <!-- Direct Contact Cards Grid -->
+        <div class="contact-grid">
+
+          <!-- WhatsApp Card -->
+          <a
+            href="https://wa.me/201013348672"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card contact-card--whatsapp reveal"
+            aria-label="Chat on WhatsApp (opens in new tab)"
+          >
+            <div class="contact-card-badge" aria-hidden="true">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div class="contact-card-content">
+              <span class="contact-card-platform">WhatsApp</span>
+              <span class="contact-card-detail">+20 101 334 8672</span>
+            </div>
+            <span class="contact-card-action">
+              <span>Chat Now</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <!-- Email Card -->
+          <a
+            href="mailto:elshaarawyhassan7@gmail.com"
+            class="contact-card contact-card--email reveal"
+            aria-label="Send email to Elshaarawy Hassan"
+          >
+            <div class="contact-card-badge" aria-hidden="true">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="contact-card-content">
+              <span class="contact-card-platform">Email</span>
+              <span class="contact-card-detail">elshaarawyhassan7@gmail.com</span>
+            </div>
+            <span class="contact-card-action">
+              <span>Send Mail</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <!-- GitHub Card -->
+          <a
+            href="https://github.com/elshaarawy7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card contact-card--github reveal"
+            aria-label="View GitHub profile (opens in new tab)"
+          >
+            <div class="contact-card-badge" aria-hidden="true">
+              <i class="fa-brands fa-github"></i>
+            </div>
+            <div class="contact-card-content">
+              <span class="contact-card-platform">GitHub</span>
+              <span class="contact-card-detail">@elshaarawy7</span>
+            </div>
+            <span class="contact-card-action">
+              <span>Explore Code</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <!-- Location Card -->
+          <div class="contact-card contact-card--location reveal">
+            <div class="contact-card-badge" aria-hidden="true">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="contact-card-content">
+              <span class="contact-card-platform">Location</span>
+              <span class="contact-card-detail">Zagazig, Sharqia, Egypt</span>
+            </div>
+            <span class="contact-card-action contact-card-action--static">
+              <span>Remote / On-Site</span>
+            </span>
+          </div>
+
+        </div><!-- /.contact-grid -->
+
+        <!-- Banner / Quick Connect -->
+        <div class="contact-banner glass-card reveal">
+          <div class="contact-banner-info">
+            <h3><i class="fa-solid fa-bolt text-accent" aria-hidden="true"></i> Ready to kickstart your next mobile app?</h3>
+            <p>I build high-performance Flutter applications with clean architecture and delightful UI.</p>
+          </div>
+          <div class="contact-banner-actions">
+            <a
+              href="assets/Elshaarawy_Hassan_CV.pdf"
+              download="Elshaarawy_Hassan_CV.pdf"
+              class="btn btn-primary btn-cv"
+              aria-label="Download CV (PDF)"
+            >
+              <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download Resume
+            </a>
+            <button
+              class="btn btn-outline copy-email-btn"
+              id="copy-email-btn"
+              aria-label="Copy email address to clipboard"
+            >
+              <i class="fa-solid fa-copy" aria-hidden="true"></i> <span id="copy-btn-text">Copy Email</span>
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /.contact-wrapper -->
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-name">Elshaarawy <span>Hassan</span></p>
+      <p class="footer-tagline">Flutter Developer · Cairo &amp; Sharqia, Egypt</p>
+      <p class="footer-copy">
+        &copy; <span id="footer-year"></span> Elshaarawy Hassan. Built with ❤️ using HTML, CSS &amp; Vanilla JS.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     BACK TO TOP BUTTON
+     ═══════════════════════════════════════════════════════ -->
+<button
+  id="back-to-top"
+  aria-label="Back to top"
+  title="Scroll back to top"
+>▲</button>
+
+<!-- ═══════════════════════════════════════════════════════
+     CUSTOM FLUTTER ICON CURSOR
+     ═══════════════════════════════════════════════════════ -->
+<div id="flutter-cursor" class="flutter-cursor" aria-hidden="true">
+  <div class="flutter-cursor-inner">
+    <svg class="flutter-cursor-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#47C5FB" d="M59.2,2.8 L18.8,43.2 L36.7,61.1 L95.1,2.8 Z"/>
+      <path fill="#02569B" d="M36.7,61.1 L59.2,83.6 L95.1,47.7 L59.2,47.7 Z"/>
+      <path fill="#01579B" d="M36.7,61.1 L59.2,47.7 L47.9,36.4 Z"/>
+    </svg>
+  </div>
+  <div class="flutter-cursor-halo"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCRIPTS (loaded at end of body)
+     ═══════════════════════════════════════════════════════ -->
+<script src="scripts/theme.js"></script>
+<script src="scripts/typing.js"></script>
+<script src="scripts/scroll.js"></script>
+<script src="scripts/main.js"></script>
+
+<!-- Set current year in footer -->
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
